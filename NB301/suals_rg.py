@@ -35,7 +35,7 @@ class LocalSearch:
         self.delta = 0.7
         self.seed = seed
         self.hashList = {}  # Store Generated solution hash values
-        self.y_valid = list() # True Fitness değeri hesaplanan tüm çözümlerin accuracy değerlerini saklar
+        self.y_valid = list()
         self.network = dict()
         self.solutionList = dict()
         self.setAllTrueFitness = set()
@@ -167,7 +167,7 @@ class LocalSearch:
 
         return self.network
     
-    # Çözümü true fitness olarak işaretle
+    
     def setSolTrueFitness(self, soln, setTrue):
         if soln.reliability is None:
             soln.reliability = 1
@@ -175,7 +175,7 @@ class LocalSearch:
         soln.upperLimit = 1
         setTrue.add(soln)
     
-    # Çözümü estimated olarak işaretle
+    
     def setSolEstimated(self, soln, setEstimated):
         if soln.reliability is None:
             soln.reliability = 0.5
