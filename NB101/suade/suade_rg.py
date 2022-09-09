@@ -276,7 +276,7 @@ class SADE(SADEBase):
                 else:
                     self.solutionList[cell.solNo] = cell
                     nonSameSolutions.append(cell)
-                ###################
+                
 
         nonSameSolutions = np.array(nonSameSolutions)
 
@@ -404,7 +404,7 @@ class SADE(SADEBase):
 
         return candidateEdges
 
-    # Çözümü estimated olarak işaretle
+    
     def setSolEstimated(self, soln, setEstimated, setTrue):
         if soln.reliability is None:
             soln.reliability = 0.5
@@ -412,7 +412,7 @@ class SADE(SADEBase):
         setEstimated.add(soln)
         setTrue -= {soln}
 
-    # Çözümü true fitness olarak işaretle
+    
     def setSolTrueFitness(self, soln, setTrue, setEstimated):
         if soln.reliability is None:
             soln.reliability = 1
@@ -504,21 +504,16 @@ class SADE(SADEBase):
         Performs a complete SADE evolution
         '''
 
-        trials = []  # İlgili jenerasyonda üretilen tüm çözümleri saklar (Aynı olan çözümler dahil)
-        nonSameSolutions = []  # İlgili jenerasyonda üretilen ve aynı olmayan çözümleri saklar
+        trials = []
+        nonSameSolutions = [] 
         Pnext = []
         runtime = []
         setTrue = set()
         setEstimated = set()
-        totalTime = sum(self.runtime)  # Tüm jenerasyonlar için harcanan true fitness hesaplama süresi
-        generationCost = 0  # İlgili jenerasyonda true fitness hesaplaması için geçen süre
+        totalTime = sum(self.runtime)
+        generationCost = 0  
 
         generationBest = max(self.population, key=lambda x: x.fitness)
-        # Control
-        if generationBest.fitness == 1:
-            print("ERROR")
-            quit()
-        ##########
 
         for j in range(self.pop_size):
             target = self.population[j].chromosome
