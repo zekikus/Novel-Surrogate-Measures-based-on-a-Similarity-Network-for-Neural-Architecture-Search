@@ -24,7 +24,7 @@ class DE:
         self.hashList = {}  # Store Generated solution hash values
         self.search_space = search_space
         self.K = 1.2
-        self.T = 3 # A*'a en yakın T çözümü isolated kümesinden trueFitness kümesine al
+        self.T = 3 
         self.delta = 0.6
         self.num_init = 10
         self.threshold = 0.0025
@@ -40,7 +40,7 @@ class DE:
         self.inc_config = None
         self.nbrEstimatedSoln = 0
         self.nbrActualSoln = 0
-        self.y_valid = list() # True Fitness değeri hesaplanan tüm çözümlerin accuracy değerlerini saklar
+        self.y_valid = list()
 
         self.reset()
 
@@ -128,7 +128,7 @@ class DE:
 
         return np.array(population)
 
-    # Local Search'den gelen komşulukları continous vektörlere çevirmek için yazıldı
+    # Convert Cell to continuous solution vector
     def get_rev_cell(self, normal_disc, reduction_disc):
         normal = []
         reduction = []
@@ -190,7 +190,7 @@ class DE:
         bestArch = max(self.population, key=lambda x: x.fitness)
         self.inc_score = bestArch.fitness
         self.inc_config = bestArch
-        ########
+        
 
         return
 
@@ -353,7 +353,7 @@ class DE:
 
         return self.network, setEstimated, setTrue
     
-    # Çözümü true fitness olarak işaretle
+    
     def setSolTrueFitness(self, soln, setTrue):
         if soln.reliability is None:
             soln.reliability = 1
@@ -361,7 +361,7 @@ class DE:
         soln.upperLimit = 1
         setTrue.add(soln)
     
-    # Çözümü estimated olarak işaretle
+    
     def setSolEstimated(self, soln, setEstimated):
         if soln.reliability is None:
             soln.reliability = 0.5
@@ -472,7 +472,7 @@ class DE:
                 nonConvergedSols.append(sol)
 
             convergenceList = nonConvergedSols
-            # İlgili iterasyon bittikten sonra reliability değerleri güncellenecek
+            
             for solNo, newFitness in newFitnessList.items():
                 self.solutionList[solNo].fitness = np.round(newFitness, 7)  # Error
 
@@ -486,8 +486,8 @@ class DE:
         Performs a complete SADE evolution
         '''
 
-        trials = []  # İlgili jenerasyonda üretilen tüm çözümleri saklar (Aynı olan çözümler dahil)
-        nonSameSolutions = []  # İlgili jenerasyonda üretilen ve aynı olmayan çözümleri saklar
+        trials = []  
+        nonSameSolutions = []  
         Pnext = []
         runtime = []
         setTrue = set()
