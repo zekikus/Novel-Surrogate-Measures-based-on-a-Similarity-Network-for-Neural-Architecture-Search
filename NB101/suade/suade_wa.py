@@ -255,8 +255,8 @@ class SADE(SADEBase):
         setEstimated = set()
         runtime = []
         nonSameSolutions = []
-        totalTime = sum(self.runtime)  # Tüm jenerasyonlar için harcanan true fitness hesaplama süresi
-        generationCost = 0  # İlgili jenerasyonda true fitness hesaplaması için geçen süre
+        totalTime = sum(self.runtime) 
+        generationCost = 0 
 
         for i in range(self.pop_size):
             cell = self.population[i]
@@ -420,14 +420,14 @@ class SADE(SADEBase):
 
         return candidateEdges
 
-    # Çözümü estimated olarak işaretle
+    
     def setSolEstimated(self, soln, setEstimated):
         if soln.reliability is None:
             soln.reliability = 0.5
         soln.fitnessType = "ESTIMATED"
         setEstimated.add(soln)
 
-    # Çözümü true fitness olarak işaretle
+   
     def setSolTrueFitness(self, soln, setTrue):
         if soln.reliability is None:
             soln.reliability = 1
@@ -501,14 +501,14 @@ class SADE(SADEBase):
         return self.network, setEstimated, setTrue
 
     def calculateReliabilityVals(self):
-        # Converge edilecek çözümler
+        # Convergence
 
         isConverged = False
-        reliabilityHistory = dict()  # Stop Condition 2 için gerekli
+        reliabilityHistory = dict()  # Stop Condition 2
         convergenceList = copy.copy(self.setAllEstimated)
         while isConverged == False:
 
-            reliabilityDiffList = []  # Stop Condition 3 için gerekli
+            reliabilityDiffList = []  # Stop Condition 3
             nonConvergedSols = list()
             newReliabilityList = dict()
 
@@ -534,7 +534,7 @@ class SADE(SADEBase):
                 nonConvergedSols.append(sol)
 
             convergenceList = nonConvergedSols
-            # İlgili iterasyon bittikten sonra reliability değerleri güncellenecek
+            
             for solNo, newR in newReliabilityList.items():
                 self.solutionList[solNo].reliability = newR
 
@@ -561,7 +561,7 @@ class SADE(SADEBase):
 
         for sol in self.setAllEstimated:
             if sol.isFeasible and sol.fitnessType == "ESTIMATED" and sol.fitness == 0:
-                sol.fitness = 0.5  # İlk fitness ataması
+                sol.fitness = 0.5  # Initial fitness assignment
 
         while isConverged == False:
 
@@ -591,7 +591,7 @@ class SADE(SADEBase):
                 nonConvergedSols.append(sol)
 
             convergenceList = nonConvergedSols
-            # İlgili iterasyon bittikten sonra reliability değerleri güncellenecek
+            
             for solNo, newFitness in newFitnessList.items():
                 self.solutionList[solNo].fitness = np.round(newFitness, 7)  # Error
 
@@ -643,12 +643,7 @@ class SADE(SADEBase):
         generationCost = 0  # İlgili jenerasyonda true fitness hesaplaması için geçen süre
 
         generationBest = max(self.population, key=lambda x: x.fitness)
-        # Control
-        if generationBest.fitness == 1:
-            print("ERROR")
-            quit()
-        ##########
-
+        
         for j in range(self.pop_size):
             target = self.population[j].chromosome
             mutant = copy.deepcopy(target)
