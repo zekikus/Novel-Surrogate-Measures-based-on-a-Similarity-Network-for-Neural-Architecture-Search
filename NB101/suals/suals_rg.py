@@ -106,7 +106,7 @@ class LocalSearch():
         if cell.isFeasible == False:
             cell.fitness = 0
             cell.cost = 0
-        ##############
+        
         self.solNo = self.solNo + 1
         return cell
 
@@ -236,7 +236,7 @@ class LocalSearch():
 
         return candidateEdges
 
-    # Çözümü estimated olarak işaretle
+    
     def setSolEstimated(self, soln, setEstimated, setTrue):
         if soln.reliability is None:
             soln.reliability = 0.5
@@ -244,7 +244,7 @@ class LocalSearch():
         setEstimated.add(soln)
         setTrue -= {soln}
 
-    # Çözümü true fitness olarak işaretle
+    
     def setSolTrueFitness(self, soln, setTrue, setEstimated):
         if soln.reliability is None:
             soln.reliability = 1
