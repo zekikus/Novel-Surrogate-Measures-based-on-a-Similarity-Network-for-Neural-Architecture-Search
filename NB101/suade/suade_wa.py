@@ -633,14 +633,14 @@ class SADE(SADEBase):
         Performs a complete SADE evolution
         '''
 
-        trials = []  # İlgili jenerasyonda üretilen tüm çözümleri saklar (Aynı olan çözümler dahil)
-        nonSameSolutions = []  # İlgili jenerasyonda üretilen ve aynı olmayan çözümleri saklar
+        trials = []
+        nonSameSolutions = []
         Pnext = []
         runtime = []
         setTrue = set()
         setEstimated = set()
-        totalTime = sum(self.runtime)  # Tüm jenerasyonlar için harcanan true fitness hesaplama süresi
-        generationCost = 0  # İlgili jenerasyonda true fitness hesaplaması için geçen süre
+        totalTime = sum(self.runtime)  
+        generationCost = 0 
 
         generationBest = max(self.population, key=lambda x: x.fitness)
         
