@@ -37,8 +37,8 @@ parser.add_argument('--fix_seed', default='False', type=str, choices=['True', 'F
                     nargs='?', help='seed')
 parser.add_argument('--run_id', default=0, type=int, nargs='?',
                     help='unique number to identify this run')
-parser.add_argument('--runs', default=235, type=int, nargs='?', help='number of runs to perform')
-parser.add_argument('--run_start', default=265, type=int, nargs='?',
+parser.add_argument('--runs', default=500, type=int, nargs='?', help='number of runs to perform')
+parser.add_argument('--run_start', default=0, type=int, nargs='?',
                     help='run index to start with for multiple runs')
 choices = ["nas_cifar10a", "nas_cifar10b", "nas_cifar10c"]
 parser.add_argument('--benchmark', default="nas_cifar10a", type=str,
