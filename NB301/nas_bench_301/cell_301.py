@@ -268,11 +268,11 @@ class Cell301:
         cell1_path_vct = np.array(self.encode('path'))
         # Cell 2 - Path encoding
         cell2_path_vct = np.array(other.encode('path'))
-        # Cell 1 - Ayla Hoca'nın Path Encoding üzerine önerdiği encoding
+        # Cell 1 - Path encoding expansion
         cell1_caz_normal_vct = np.array(self.encode('caz', 'normal'))
         cell1_caz_reduce_vct = np.array(self.encode('caz', 'reduce'))
         cell1_caz_vct = np.concatenate((cell1_caz_normal_vct, cell1_caz_reduce_vct))
-        # Cell 2 - Ayla Hoca'nın Path Encoding üzerine önerdiği encoding
+        # Cell 2 - Path encoding expansion
         cell2_caz_normal_vct = np.array(other.encode('caz', 'normal'))
         cell2_caz_reduce_vct = np.array(other.encode('caz', 'reduce'))
         cell2_caz_vct = np.concatenate((cell2_caz_normal_vct, cell2_caz_reduce_vct))
