@@ -25,7 +25,7 @@ class DE:
         self.hashList = {}  # Store Generated solution hash values
         self.search_space = search_space
         self.n_min = 30
-        self.T = 3 # A*'a en yakın T çözümü isolated kümesinden trueFitness kümesine al
+        self.T = 3
         self.delta = 0.4
         self.num_init = 10
         self.threshold = 0.0025
@@ -129,7 +129,7 @@ class DE:
 
         return np.array(population)
 
-    # Local Search'den gelen komşulukları continous vektörlere çevirmek için yazıldı
+    
     def get_rev_cell(self, normal_disc, reduction_disc):
         normal = []
         reduction = []
@@ -365,7 +365,7 @@ class DE:
 
         return self.network, setEstimated, setTrue
     
-    # Çözümü true fitness olarak işaretle
+    
     def setSolTrueFitness(self, soln, setTrue, setEstimated):
         if soln.reliability is None:
             soln.reliability = 1
@@ -374,7 +374,7 @@ class DE:
         setTrue.add(soln)
         setEstimated -= {soln}
     
-    # Çözümü estimated olarak işaretle
+    
     def setSolEstimated(self, soln, setEstimated, setTrue):
         if soln.reliability is None:
             soln.reliability = 0.5
@@ -543,7 +543,7 @@ class DE:
 
         self.population = np.array(Pnext)
         
-        # v1 - Ek
+        # Add Best solution within the setTrue 
         if len(setEstimated) > 0:
             bestEstimated = max(setEstimated, key=lambda x: x.fitness)
             
