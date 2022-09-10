@@ -42,8 +42,7 @@ class LocalSearch():
         self.setAllTrueFitness = set()
         self.setIncumbents = set()
         self.budget = budget
-        self.T = 3 # A*'a en yakın T çözümü isolated kümesinden trueFitness kümesine al
-        self.threshold = 0.1
+        self.T = 3
         self.db = kwargs['b']
         self.nbrEstimatedSoln = 0
         self.nbrActualSoln = 0
