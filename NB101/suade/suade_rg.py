@@ -37,7 +37,7 @@ class SADEBase():
         self.budget = budget
         self.fix_type = boundary_fix_type
         self.n_min = 40
-        self.T = 3 # A*'a en yakın T çözümü isolated kümesinden trueFitness kümesine al
+        self.T = 3
         self.delta = 0.5
         self.threshold = 0.1
         self.db = kwargs['b']
