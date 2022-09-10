@@ -587,24 +587,7 @@ class DE:
                 Pnext.append(target)
 
         self.population = np.array(Pnext)
-        
-        if len(setEstimated) > 0:
-            bestEstimated = max(setEstimated, key=lambda x: x.fitness)
-            trueNeighbors = [self.solutionList[n] for n in self.network[bestEstimated.solNo].keys() if self.solutionList[n].fitnessType == "ACTUAL"]
-            
-            # Remove edge between bestEstimated and true neighbors of its.
-            for n in trueNeighbors:
-                del self.network[bestEstimated.solNo][n.solNo]
-                del self.network[n.solNo][bestEstimated.solNo]
-
-            # Remove bestEstimated solution from AllEstimated set
-            self.setAllEstimated = self.setAllEstimated - {bestEstimated}
-            self.setSolTrueFitness(bestEstimated, setTrue)
-            self.getActualForSoln(bestEstimated)
-            bestEstimated.reliability = 1
-        ########
-
-        
+       
         return
 
     def run(self, generations=1, verbose=False, reset=True, seed=None, ):
