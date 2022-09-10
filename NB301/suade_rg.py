@@ -542,17 +542,6 @@ class DE:
                 Pnext.append(target)
 
         self.population = np.array(Pnext)
-        
-        # Add Best solution within the setTrue 
-        if len(setEstimated) > 0:
-            bestEstimated = max(setEstimated, key=lambda x: x.fitness)
-            
-            # Remove bestEstimated solution from AllEstimated set
-            self.setAllEstimated = self.setAllEstimated - {bestEstimated}
-            self.setSolTrueFitness(bestEstimated, setTrue, setEstimated)
-            self.getActualForSoln(bestEstimated)
-            bestEstimated.reliability = 1
-        ########
 
         return
 
