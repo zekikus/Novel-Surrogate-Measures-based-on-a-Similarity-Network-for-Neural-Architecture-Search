@@ -41,6 +41,7 @@ class LocalSearch():
         self.setAllTrueFitness = set()
         self.setIncumbents = set()
         self.budget = budget
+        self.K = 1.4
         self.T = 3
         self.db = kwargs['b']
         self.nbrEstimatedSoln = 0
