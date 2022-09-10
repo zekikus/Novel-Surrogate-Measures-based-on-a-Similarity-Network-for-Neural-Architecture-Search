@@ -30,7 +30,6 @@ class LocalSearch:
         self.nbrEstimatedSoln = 0
         self.nbrActualSoln = 0
 
-        self.K = 1
         self.query = 0
         self.delta = 0.7
         self.seed = seed
